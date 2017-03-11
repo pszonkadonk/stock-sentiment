@@ -1,0 +1,25 @@
+{
+  "name": "prototype",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.1.5",
+    "body-parser": "^1.17.0",
+    "cfenv": "^1.0.4",
+    "express": "^4.15.0",
+    "feedparser": "^2.1.0",
+    "handlebars": "^4.0.6",
+    "hbs": "^4.0.1",
+    "mongoose": "^4.8.5",
+    "nodemon": "^1.11.0",
+    "q": "^1.4.1",
+    "watson-developer-cloud": "^2.24.1"
+  }
+}

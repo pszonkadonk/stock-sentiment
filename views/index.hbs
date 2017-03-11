@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {{!--<link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">--}}
+
+    <title>STANLEY - Free Bootstrap Theme </title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css">
+
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="stylesheets/main.css">
+    {{!--<link rel="stylesheet" href="stylesheets/style.css">--}}
+
+
+    <script src="jquery/dist/jquery.min.js"></script>
+    <script src="scripts/hover.zoom.js"></script>
+    <script src="scripts/hover.zoom.conf.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <!-- Static navbar -->
+    <div class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">Cognitive Finance</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Work</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+	<!-- +++++ Welcome Section +++++ -->
+	<div id="ww">
+	    <div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2 centered">
+					<img src="images/newapp-icon-green.png" alt="Stanley">
+					<h1>About Cognitive Finance</h1>
+					<p>Cognitive Finance is a web based application built ontop of Node JS that leverages IBM Watson's AlchemyLanguage and AlchemyData NLP Libraries to provide sentiment analysis of both your investments
+            and the macroeconomic environment at large</p>
+					<p>Please <a href="mailto:mjp529@gmail.com">email me</a> with any questions about the application and feel free to fork the application on my <a href="https://github.com/pszonkadonk/cognitive-finance">Github</a></p>
+				</div><!-- /col-lg-8 -->
+			</div><!-- /row -->
+	    </div> <!-- /container -->
+	</div><!-- /ww -->
+	
+	
+	<!-- +++++ Projects Section +++++ -->
+	
+	<div class="container">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>Symbol</th>
+					<th>Instrument</th>
+					<th>Overall Sentiment</th>
+					<th>Recent Rise or Fall</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each stocks}}
+					<tr>
+						<td>{{this.stockTicker}}</td>
+						<td>{{this.stockName}}</td>
+						<td>{{this.sentiment}}</td>
+					</tr>
+				{{/each}}
+				</tr>
+			</tbody>
+		</table>
+	</div><!-- /container -->
+	
+	
+	<!-- +++++ Footer Section +++++ -->
+	
+	<div id="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4">
+					<h4>Office</h4>
+					<p>
+						Some Address 987,<br/>
+						123-456-7890, <br/>
+						Wayne, NJ.
+					</p>
+				</div><!-- /col-lg-4 -->
+				
+				<div class="col-lg-4">
+					<h4>My Links</h4>
+					<p>
+						<a href="https://www.linkedin.com/in/michael-pszonka-2728ba2a">Linkedin</a><br/>
+						<a href="https://twitter.com/pszonkadonk">Twitter</a><br/>
+						<a href="https://github.com/pszonkadonk">Github</a>
+					</p>
+				</div><!-- /col-lg-4 -->
+				
+				<div class="col-lg-4">
+					<h4>About Michael</h4>
+					<p>I'm a graduate student in Computer Science at Stevens Institute of Technology in Hoboken.</p>
+				</div><!-- /col-lg-4 -->
+			
+			</div>
+		
+		</div>
+	</div>
+	
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
