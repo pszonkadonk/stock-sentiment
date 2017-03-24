@@ -5,8 +5,7 @@ const alchemy_language = new AlchemyLanguage(alchemyApiKey)
 
 // cfenv provides access to your xCloud Foundry environment
 const cfenv = require('cfenv');
-
-
+const appEnv = cfenv.getAppEnv();
 
 const async = require('async');
 const bodyParser = require('body-parser');
@@ -33,27 +32,14 @@ const sentiment = require('./sentiment');
 const feedparser = require('./feedparser');
 
 
-
 // middleware
 
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
-const appEnv = cfenv.getAppEnv();
 
 app.use(express.static(__dirname + '/public'));
 app.use(express.static(path.join(__dirname, 'bower_components')))
 app.use(bodyParser());
-
-
-// seed.seedDatabase();
-// sentiment.getSentiment("58ba2b1195244e589eedcefb");
-// sentiment.getSentiment("58ba2b1195244e589eedcefc");
-// sentiment.getSentiment("58ba2b1195244e589eedcefd");
-
-
-// sentiment.resetSentiment("58ba2b1195244e589eedcefb");
-// sentiment.resetSentiment("58ba2b1195244e589eedcefc");
-// sentiment.resetSentiment("58ba2b1195244e589eedcefd");
 
 
 const urls = [
@@ -62,50 +48,40 @@ const urls = [
     "http://articlefeeds.nasdaq.com/nasdaq/symbols?symbol=MSFT"
 ];  
 
-Promise.all([
+let stockFeeds = Promise.all([
     feedparser.getFeed("http://articlefeeds.nasdaq.com/nasdaq/symbols?symbol=IBM"),
     feedparser.getFeed("http://articlefeeds.nasdaq.com/nasdaq/symbols?symbol=AAPL"),
     feedparser.getFeed("http://articlefeeds.nasdaq.com/nasdaq/symbols?symbol=MSFT")
-]).then((feeds) => {
-    console.log(feeds.length);
-    // feeds.forEach(function(feed) {
-    //     console.log(feed);
-    //     console.log("---------------");
-    //     console.log("\n\n\n\n\n\n\n\n\n\n");
-    //     console.log("---------------");
-    // });
+]);
+
+let articles = stockFeeds.then((content)=> {
+    return new Promise((resolve, reject) => {
+        let contentArray = []
+        content.forEach(function(article) {
+            article.forEach(function(fd) {
+                contentArray.push(fd.link);
+            });
+        });
+        resolve(contentArray);
+    });
+});
+
+let articlesAsObject = articles.then((links) => {
+    return new Promise((resolve, reject) => {
+        let objectArray = []
+        links.forEach(function(l) {
+            objectArray.push({
+                url: l
+            });
+        });
+        resolve(objectArray);
+    });
+});
+
+
+let sentimentAnalysis = articlesAsObject.then((feeds) => {
+    sentiment.multipleSentiments(feeds);
 })
-
-// let feed = feedparser.getFeed();
-
-// let articles = feed.then((content)=> {
-//     return new Promise((resolve, reject) => {
-//         let contentArray = []
-//         console.log("got the feed");
-//         content.forEach(function(article) {
-//             contentArray.push(article.link);
-//         });
-//         resolve(contentArray);
-//     });
-// });
-
-// let articlesAsObject = articles.then((links) => {
-//     return new Promise((resolve, reject) => {
-//         let objectArray = []
-//         links.forEach(function(l) {
-//             objectArray.push({
-//                 url: l
-//             });
-//         });
-//         resolve(objectArray);
-//     });
-// });
-
-
-// let sentimentAnalysis = articlesAsObject.then((linkObjects) => {
-//     let aSlice = linkObjects.slice(1,4);
-//     sentiment.multipleSentiments(aSlice);
-// })
 
 
 
