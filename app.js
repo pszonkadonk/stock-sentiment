@@ -1,6 +1,6 @@
 const express = require('express');
 const AlchemyLanguage = require('watson-developer-cloud/alchemy-language/v1');
-const alchemyApiKey = {api_key: process.env.ALCHEMY_API_KEY || 'e159c11d8dda60a89823f4871028767ebecfe68b'}
+const alchemyApiKey = {api_key: process.env.ALCHEMY_API_KEY}
 const alchemy_language = new AlchemyLanguage(alchemyApiKey)
 
 // cfenv provides access to your xCloud Foundry environment
