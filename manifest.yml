@@ -1,8 +1,5 @@
+---
 applications:
-- path: .
-  memory: 256M
-  instances: 1
-  domain: mybluemix.net
-  name: cognitive-finance
-  host: cognitive-finance
-  disk_quota: 1024M
+ - name: stock-sentiment
+   random-route: true
+   memory: 256M
