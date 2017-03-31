@@ -1,0 +1,24 @@
+curl -X POST -u "73e61352-0fbf-4c52-bce6-9edacc569e49":"wrux32q73Th5" -H "Content-Type: application/json" -d '{ "name":"my-first-environment", "description":"exploring environments", "size":0}' "https://gateway.watsonplatform.net/discovery/api/v1/environments?version=2016-12-01"
+
+
+curl -u "73e61352-0fbf-4c52-bce6-9edacc569e49:"wrux32q73Th5" https://gateway.watsonplatform.net/discovery/api/v1/environments/24be1362-a124-4883-98dc-5aaa7b850543?version=2016-12-01
+curl -u "73e61352-0fbf-4c52-bce6-9edacc569e49":"wrux32q73Th5" https://gateway.watsonplatform.net/discovery/api/v1/environments/24be1362-a124-4883-98dc-5aaa7b850543?version=2016-12-01
+
+
+curl -u "73e61352-0fbf-4c52-bce6-9edacc569e49":"wrux32q73Th5" https://gateway.watsonplatform.net/discovery/api/v1/environments/24be1362-a124-4883-98dc-5aaa7b850543/configurations?version=2016-12-01
+
+congfiguration_id d46f3858-fb68-438e-9967-149542989b5b
+environment_id 24be1362-a124-4883-98dc-5aaa7b850543
+collection_id c42cbb9d-d01f-417f-bae8-7829c1602b4b
+
+curl -X POST -u "73e61352-0fbf-4c52-bce6-9edacc569e49":"wrux32q73Th5" -H "Content-Type: application/json" -d '{"name": "*my-first-collection*", "description": "exploring collections", "d46f3858-fb68-438e-9967-149542989b5b":"{configuration_id}" , "language": "en_us"}' https://gateway.watsonplatform.net/discovery/api/v1/environments/24be1362-a124-4883-98dc-5aaa7b850543/collections?version=2016-12-01
+
+
+curl -u "73e61352-0fbf-4c52-bce6-9edacc569e49":"wrux32q73Th5" https://gateway.watsonplatform.net/discovery/api/v1/environments/24be1362-a124-4883-98dc-5aaa7b850543/collections/c42cbb9d-d01f-417f-bae8-7829c1602b4b?version=2016-12-01
+
+
+
+
+curl -u "73e61352-0fbf-4c52-bce6-9edacc569e49":"wrux32q73Th5" 'https://gateway.watsonplatform.net/discovery/api/v1/environments/ae482d8d-b420-4bfb-bd08-6fa49cb61184/collections/2fbd46a5-863e-4c9b-915e-1db4ca71bc34/query?version=2016-12-01&query=entities.text:IBM'
+
+
